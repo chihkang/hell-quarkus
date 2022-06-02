@@ -8,7 +8,8 @@ platform:
 steps:
   - name: build
     image: maven:3.8.5-openjdk-11
-    commands: ./mvnw package -Pnative
+    commands: 
+    - ./mvnw package -Pnative
 # - name: test
 #   image: maven:3.8.5-openjdk-11
 #   commands:  

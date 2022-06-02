@@ -6,12 +6,14 @@ platform:
   arch: arm64
 
 steps:
-- name: test
-  image: maven:3.8.5-openjdk-11
-  commands:
-  - cd ~/getting-started
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - mvn test -B
+  - name: build
+    image: maven:3.8.5-openjdk-11
+    commands: ./mvnw package -Pnative
+# - name: test
+#   image: maven:3.8.5-openjdk-11
+#   commands:  
+#   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#   - mvn test -B
 
 - name: docker  
   image: plugins/docker
@@ -19,6 +21,7 @@ steps:
     repo: chihkang/quarkus-app
     tags:
     - latest
+    target: src/main/docker/Dockerfile.native
     username:
       from_secret: docker_username
     password:

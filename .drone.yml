@@ -6,24 +6,24 @@ platform:
   arch: arm64
 
 steps:
-  - name: build
-    image: maven:3.8.5-openjdk-11
-    commands: 
-    - ./mvnw package -Pnative
+  # - name: build
+  #   image: maven:3.8.5-openjdk-11
+  #   commands: 
+  #   - ./mvnw package -Pnative
 # - name: test
 #   image: maven:3.8.5-openjdk-11
 #   commands:  
 #   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 #   - mvn test -B
-# - name: docker build & publish  
-#   image: plugins/docker
-#   settings:
-#     repo: chihkang/quarkus-app
-#     tags:
-#     - latest
-#     target: src/main/docker/Dockerfile.native
-#     username:
-#       from_secret: docker_username
-#     password:
-#       from_secret: docker_password
-#     debug: true
+- name: docker build & publish  
+  image: plugins/docker
+  settings:
+    repo: chihkang/quarkus-app
+    tags:
+    - latest
+    target: src/main/docker/Dockerfile.multistage
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    debug: true

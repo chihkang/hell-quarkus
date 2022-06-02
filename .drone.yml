@@ -22,7 +22,7 @@ steps:
     tags:
     - latest
     # target: src/main/docker/Dockerfile.multistage
-    dockerfile: Dockerfile.multistage
+    dockerfile: src/main/docker/Dockerfile.multistage
     username:
       from_secret: docker_username
     password:

@@ -36,7 +36,7 @@ steps:
   - mvn clean package
 - name: docker build image & push
   image: plugins/docker
-  privileged: true
+  # privileged: true
   settings:
     repo: chihkang/quarkus-app
     # tags:

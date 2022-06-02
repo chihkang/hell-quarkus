@@ -36,14 +36,20 @@ steps:
   - mvn clean package
 - name: docker build image & push
   image: plugins/docker
+  privileged: true
   settings:
     repo: chihkang/quarkus-app
-    tags:
-    - latest
+    # tags:
+    # - latest
     # target: src/main/docker/Dockerfile.multistage
+    auto_tag: true
+    auto_tag_suffix: linux-arm64
     dockerfile: src/main/docker/Dockerfile.jvm
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
     debug: true
+    volumes:
+    - name: maven-repo
+      path: ~/.m2

@@ -33,7 +33,7 @@ steps:
 - name: build use maven
   image: maven:3.8.5-openjdk-11
   commands:
-  - ./mvnw package
+  - mvn clean package
 - name: docker build image & push
   image: plugins/docker
   settings:

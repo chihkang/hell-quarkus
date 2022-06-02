@@ -28,7 +28,8 @@ steps:
     password:
       from_secret: docker_password
     debug: true
-    dry_run: true        
+    dry_run: true
+    purge: false    
 
 - name: build use maven
   image: maven:3.8.5-openjdk-11

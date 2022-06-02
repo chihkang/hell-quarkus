@@ -1,0 +1,21 @@
+###
+# test couldn't run successfully on mac m1, skip it.
+# 
+# [Generate linux executable]
+# Before building the container image run:
+# 
+# ./mvnw clean install -Pnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dmaven.test.skip
+# 
+# Then, build the image with:
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/rest-client-quickstart .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 8080:8080 quarkus/quarkus/rest-client-quickstart
+#
+###
+FROM ghcr.io/graalvm/graalvm-ce:latest AS build
+RUN gu install native-image
+WORKDIR /project
+VOLUME ["/project"]
+ENTRYPOINT ["native-image"]

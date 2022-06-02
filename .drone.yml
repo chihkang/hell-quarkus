@@ -22,9 +22,13 @@ steps:
     tags:
     - latest
     # target: src/main/docker/Dockerfile.multistage
-    dockerfile: src/main/docker/Dockerfile.multistage
+    dockerfile: src/main/docker/Dockerfile.graalbase
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
     debug: true
+- name: build  
+  image: maven:3.8.5-openjdk-11
+  commands:
+  - ./mvnw clean install -Pnative -Dquarkus.native.container-build=true -Dmaven.test.skip

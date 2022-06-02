@@ -15,7 +15,7 @@ steps:
 #   commands:  
 #   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 #   - mvn test -B
-- name: docker build & publish  
+- name: docker build graalbase
   image: plugins/docker
   settings:
     repo: chihkang/quarkus-app
@@ -28,7 +28,9 @@ steps:
     password:
       from_secret: docker_password
     debug: true
-- name: build  
+    dry_run: true        
+
+- name: build use maven
   image: maven:3.8.5-openjdk-11
   commands:
   - ./mvnw clean install -Pnative -Dquarkus.native.container-build=true -Dmaven.test.skip

@@ -14,8 +14,7 @@ steps:
 #   commands:  
 #   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 #   - mvn test -B
-
-- name: docker  
+- name: docker build & publish  
   image: plugins/docker
   settings:
     repo: chihkang/quarkus-app
@@ -26,3 +25,4 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+    debug: true

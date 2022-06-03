@@ -51,6 +51,6 @@ steps:
     password:
       from_secret: docker_password
     debug: true
-    volumes:
-    - name: maven-repo
-      path: ~/.m2
+    # volumes:
+    # - name: maven-repo
+    #   path: ~/.m2

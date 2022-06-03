@@ -45,6 +45,7 @@ steps:
     auto_tag: true
     auto_tag_suffix: linux-arm64
     dockerfile: src/main/docker/Dockerfile.jvm
+    cache_from: chihkang/quarkus-app:linux-arm64
     username:
       from_secret: docker_username
     password:

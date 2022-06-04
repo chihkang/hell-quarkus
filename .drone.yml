@@ -6,30 +6,6 @@ platform:
   arch: arm64
 
 steps:
-  # - name: build
-  #   image: maven:3.8.5-openjdk-11
-  #   commands: 
-  #   - ./mvnw package -Pnative
-# - name: test
-#   image: maven:3.8.5-openjdk-11
-#   commands:  
-#   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-#   - mvn test -B
-# - name: docker build graalbase
-#   image: plugins/docker
-#   settings:
-#     repo: chihkang/quarkus-app
-#     tags:
-#     - latest
-#     # target: src/main/docker/Dockerfile.multistage
-#     dockerfile: src/main/docker/Dockerfile.graalbase
-#     username:
-#       from_secret: docker_username
-#     password:
-#       from_secret: docker_password
-#     debug: true
-#     dry_run: true
-#     purge: false
 - name: build use maven
   image: maven:3.8.5-openjdk-11
   commands:
@@ -39,9 +15,6 @@ steps:
   # privileged: true
   settings:
     repo: chihkang/quarkus-app
-    # tags:
-    # - latest
-    # target: src/main/docker/Dockerfile.multistage
     auto_tag: true
     auto_tag_suffix: linux-arm64
     dockerfile: src/main/docker/Dockerfile.jvm
@@ -51,6 +24,4 @@ steps:
     password:
       from_secret: docker_password
     debug: true
-    # volumes:
-    # - name: maven-repo
-    #   path: ~/.m2
+    dry-run: false

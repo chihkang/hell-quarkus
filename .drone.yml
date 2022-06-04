@@ -6,10 +6,11 @@ platform:
   arch: arm64
 
 steps:
-- name: build use maven
+- name: maven build
   image: maven:3.8.5-openjdk-11
   commands:
   - mvn clean package
+  
 - name: docker build image & push
   image: plugins/docker
   # privileged: true
@@ -24,4 +25,5 @@ steps:
     password:
       from_secret: docker_password
     debug: true
-    dry_run: true
+    # true=not push to docker registry
+    dry_run: false 

@@ -15,7 +15,7 @@ steps:
   image: plugins/docker
   # privileged: true
   settings:
-    repo: chihkang/hello-quarkus
+    repo: chihkang/quarkus-app
     auto_tag: true
     auto_tag_suffix: linux-arm64
     dockerfile: src/main/docker/Dockerfile.jvm
